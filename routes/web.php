@@ -14,6 +14,7 @@ use App\Http\Controllers\VideoChatController;
 */
 
 Route::get('/', [VideoChatController::class, 'index']);
+Route::post('/join-meeting', [VideoChatController::class, 'joinMeeting']);
 Route::get('/init-zoom', [VideoChatController::class, 'initZoom']);
 Route::get('/meetingEnd', [VideoChatController::class, 'meetingEnd']);
 Route::get('/getSignature', [VideoChatController::class, 'getSignature']);

@@ -8,8 +8,9 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
+        <!-- import #zmmtg-root css -->
+        <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.6/css/bootstrap.css" />
+        <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.6/css/react-select.css" />
 
         <!-- Styles -->
         <style>
@@ -22,20 +23,37 @@
             }
         </style>
     </head>
-    <body class="">
-        <form action="{{ url('join-meeting') }}" method="post">
-        @csrf
-        <div class="row mt-5">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
-                <input class="form-control" type="number" name="role" placeholder="Role"/>
-            </div>
-            <button class="btn btn-primary">Join Meeting</button>
-            </div>
-        </form>
+    <body class="ReactModal__Body--open">
+        <!-- added on import -->
+        <div id="zmmtg-root"></div>
+        <div id="aria-notify-area"></div>
+        
+        <!-- added on meeting init -->
+        <div class="ReactModalPortal"></div>
+        <div class="ReactModalPortal"></div>
+        <div class="ReactModalPortal"></div>
+        <div class="ReactModalPortal"></div>
+        <div class="global-pop-up-box"></div>
+        <div class="sharer-controlbar-container sharer-controlbar-container--hidden"></div>
+        
 
-         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+        <script>
+            var apiKey = '{{ $apiKey }}';
+            // alert(apiKey);
+        </script>
+
+         <!-- import ZoomMtg dependencies -->
+        <script src="https://source.zoom.us/1.8.6/lib/vendor/react.min.js"></script>
+        <script src="https://source.zoom.us/1.8.6/lib/vendor/react-dom.min.js"></script>
+        <script src="https://source.zoom.us/1.8.6/lib/vendor/redux.min.js"></script>
+        <script src="https://source.zoom.us/1.8.6/lib/vendor/redux-thunk.min.js"></script>
+        <script src="https://source.zoom.us/1.8.6/lib/vendor/lodash.min.js"></script>
+
+        <!-- import ZoomMtg -->
+        <script src="https://source.zoom.us/zoom-meeting-1.8.6.min.js"></script>
+        
+        
+        <!-- import local .js file -->
+        <script src="js/index.js"></script>
     </body>
 </html>

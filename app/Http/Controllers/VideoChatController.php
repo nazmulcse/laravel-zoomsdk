@@ -13,6 +13,18 @@ class VideoChatController extends Controller
         return view('welcome');
     }
 
+    public function joinMeeting(Request $request)
+    {
+        //dd(env('ZOOM_CLIENT_KEY'));
+        //dd($request->role);
+        $data['apiKey'] = env('ZOOM_CLIENT_KEY');
+        $data['apiSecret'] = env('ZOOM_CLIENT_SECRET');
+        $data['role'] = $request->role;
+        //$data['meetingId'] = $this->initZoom();
+        //$data['signature'] = $this->generate_signature($data['apiKey'], $data['apiSecret'], $data['meetingId'], $request->role);
+        return view('join-meeting', $data);
+    }
+
     public function initZoom()
     {
         $user = Zoom::user()->find('nazmul.sbpgc@gmail.com');
@@ -26,7 +38,8 @@ class VideoChatController extends Controller
         ];
         $meeting = Zoom::meeting()->make($meetingInfo);
         $user->meetings()->save($meeting);
-        dd($user->meetings()->all());
+        //dd($user->meetings()->all());
+        return $user->meetings()->id;
 
     }
     public function getSignature()
